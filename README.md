@@ -1,0 +1,5 @@
+# Complete Class Calculators
+
+Laze (Complete Class Calculators) is a website that is intended to help students in their STEM classes. The website provides a wide variety of formulas and resources to help students solve their homework problems. Currently there are two classes which are being offered, one is introductory Statistics and the other is introductory Linear Algebra.
+
+The Linear Algebra calculator is different than other linear algebra calculators available on the web because this one can read matrix images and parse the results. For other linear algebra calculators online, the user will have to manually input the matrix cell by cell. This can get tedious especially with large matrices. Instead with our tool, a submission of a screenshot of a matrix will send the screenshot to the Google Cloud Vision API. It will parse the matrix and preemptively fill out the matrix cells for the user. This will save a lot of time. Then Numpy will be used in the backend to solve the linear algebra calculations.
