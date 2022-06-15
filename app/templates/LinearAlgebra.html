@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/mag_pop/magnific-popup.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/vendors/css/normalize.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/vendors/css/grid.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/linalg.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/queries.css') }}">
+
+        <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="{{ url_for('static',filename='javascript/linalg.js') }}"></script>
+
+        <title>CCC: Linear Algebra</title>
+
+        <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static',filename='images/fav_icons/favicon-32x32.png') }}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static',filename='images/fav_icons/favicon-16x16.png') }}">
+    </head>
+
+    <body>
+
+        <header>
+            <nav>
+                <div class="row">
+                    <img src="{{ url_for('static',filename='images/general_photos/logo.png') }}" alt="CCC Logo" class="logo">
+                    <img src="{{ url_for('static',filename='images/general_photos/logo.png') }}" alt="CCC Logo" class="logo-scroll">
+
+                    <ul class="main-nav main-nav-output">
+                        <li><a href="/team">Meet the Team</a></li>
+                        <li><a href="/">Classes</a></li>
+                        <li><a href="/logout">Log Out</a></li>
+                    </ul>
+                </div>
+            </nav>
+
+          </header>
+
+          <div class="intro">
+            <h2>Complete Class Calculators: Linear Algebra</h2>
+            <h3>What's new: </h3>
+            <p>The Linear Algebra calculator has a new innovative way for fast matrix input...
+              <br><br> Introducing matrix number detection using Optical Character Recognition
+              <br><br> Simply upload or paste an image of matrix, crop accordingly and submit for calculation!
+            </p>
+          </div>
+
+          <div class="linAlgForm">
+            <div class="tabs">
+            	<ul class="tab-links">
+            		<li class="active"><a href="#tab1">Manual Matrix Input</a></li>
+            		<li><a href="#tab2"><b>NEW: </b>Submit Matrix Image</a></li>
+            	</ul>
+
+            	<div class="tab-content">
+            		<div id="tab1" class="tab active">
+            			<p>Tab #1 content goes here!</p>
+            			<p>Hi</p>
+            		</div>
+
+            		<div id="tab2" class="tab">
+            			<h2>Quick and Easy</h2>
+                  <h3>No more need for tedious cell by cell entry of matrix!</h3>
+                  <h3>Just follow the 3 easy steps below</h3>
+                  <h4>Step 1: Submit image</h4>
+                  <p>The image can either be pasted into the bin below or uploaded.
+                    <br>This includes matrix screenshots. </p>
+                  <div class="step1" style="width: 100%;">
+                    <br>
+                    <div class="Paste_image" style="width:40%; float: left;">
+                      <h3>Paste matrix image in this box</h3>
+                      <div class="paste_image_container">
+                          <div>
+                              <img class="preview" id="preview" />
+                          </div>
+                      </div>
+                    </div>
+                    <div style="width:10%; float: left; padding-left:3%;">
+                      <h2>or</h2>
+                    </div>
+                    <div class="Upload_image" style="width:40%; float: left;">
+                      <h3>Upload matrix image</h3>
+                      <br>
+                      <input type="file" id="upload_img" name="upload_img" accept="image/*" onchange="loadFile(event)">
+                    </div>
+                  </div>
+                  <div class="step1_finish" style="width:100%;">
+                    <button type="button" class="button" onclick="submitImage()">Submit Image </button>
+                  </div>
+                  <div id="step2" class="step2">
+                    <h4>Step 2: Crop image</h4>
+                    <p>Please crop the image to only include the matrix
+                      <br>and/or the matrix equation </p>
+                    <img class="cropped" id="cropped" />
+                  </div>
+            		</div>
+            	</div>
+            </div>
+          </div>
+
+
+      </body>
+</html>

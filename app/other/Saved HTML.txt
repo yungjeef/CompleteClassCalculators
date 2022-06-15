@@ -1,0 +1,21 @@
+HomeScreen.html
+<div class="homescreen-info">
+              <div class="intro">
+                  <h2>What is Laze?</h2>
+                  <p>Laze a new way to help you study. Whether you are doing homework <br>
+                    or preparing for exams, Laze offers a plethora of calculator tools, <br>
+                    formulas and explanations to ensure that you are thoroughly covered.
+                  </p>
+              </div>
+              <div class="update">
+                <h3>Current Courses Offered</h3>
+                <ul>
+                  <li>Introductory Statistics</li>
+                </ul>
+                <h3>Courses to be added soon</h3>
+                <ul>
+                  <li>Introductory Physics</li>
+                  <li>Linear Algebra</li>
+                </ul>
+              </div>
+            </div>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/stats.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/team.css') }}">
+
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+        <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+
+        <title>Laze Study</title>
+
+        <link rel="manifest" href="{{ url_for('static',filename='/images/fav_icons/site.webmanifest') }}">
+        <link rel="mask-icon" href="{{ url_for('static',filename='/images/fav_icons/safari-pinned-tab.svg') }}" color="#5bbad5">
+        <link rel="shortcut icon" href="{{ url_for('static',filename='/images/fav_icons/favicon.ico') }}">
+        <meta name="msapplication-TileColor" content="#00aba9">
+        <meta name="msapplication-config" content="{{ url_for('static',filename='/images/fav_icons/browserconfig.xml') }}">
+        <meta name="theme-color" content="#ffffff">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script type="text/javascript">
+        $("#slideshow > div:gt(0)").hide();
+          setInterval(function() {
+            $('#slideshow > div:first')
+            .fadeOut(1000)
+            .next()
+            .fadeIn(1000)
+            .end()
+            .appendTo('#slideshow');
+          }, 3000);
+        </script>
+    </head>
+
+    <body>
+
+        <header>
+            <nav>
+                <div class="row">
+                    <img src="{{ url_for('static',filename='/images/general_photos/logo.png') }}" alt="CCC Logo" class="logo">
+                    <img src="{{ url_for('static',filename='/images/general_photos/logo.png') }}" alt="CCC Logo" class="logo-scroll">
+                    <ul class="main-nav main-nav-output">
+                        <li><a href="/"><h1>LAZE Study</h1></a></li>
+                        <li><a href="/team">Meet the Team</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="/login">Sign In</a></li>
+                    </ul>
+                    <a class="small-screen-nav nav-icon-popout"><ion-icon name="add-circle"></ion-icon></a>
+                </div>
+            </nav>
+
+            <div class="slideshow">
+              <h2><span class="ion-minus"></span>Our Team<span class="ion-minus"></span></h2>
+
+              <div class="team">
+                <div id="first" class="divSquare">
+                  <h2>Jason McCartney</h2>
+                  <h3>Founder/ Lead Developer</h3>
+                  <br>
+                  <img src="{{ url_for('static',filename='/images/team/jason.jpg') }}">
+                </div>
+                <div id="second" class="divSquare">
+                  <h2>Jeffrey Mei</h2>
+                  <h3>Full Stack Developer</h3>
+                  <br>
+                  <img src="{{ url_for('static',filename='/images/team/jeff.png') }}">
+                </div>
+                <div style='clear:both'></div>
+                <div id="third" class="divSquare">
+                  <h2>Rob Wilhelm</h2>
+                  <h3>Tax Consultant</h3>
+                  <br>
+                  <img src="{{ url_for('static',filename='/images/team/rob.png') }}">
+                </div>
+                <div id="fourth" class="divSquare">
+                  <h2>Andrew Pardue</h2>
+                  <h3>Software Sales</h3>
+                  <br>
+                  <img src="{{ url_for('static',filename='/images/team/drew.png') }}">
+                </div>
+            </div>
+          </div>
+        </header>
+
+        <footer>
+            <div class="row">
+                <div class="col span-1-of-2">
+                    <ul class="footer-nav">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Press</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col span-1-of-2">
+                    <ul class="social-media">
+                        <li><a href="https://www.facebook.com/Complete-Class-Calculators-465971840846178/?view_public_for=465971840846178"><ion-icon name="logo-facebook" class="facebook-icon"></ion-icon></a></li>
+                        <li><a href="https://twitter.com/_TI84_?lang=en"><ion-icon name="logo-twitter" class="twitter-icon"></ion-icon></a></li>
+                        <li><a href="#"><ion-icon name="logo-youtube" class="youtube-icon"></ion-icon></a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row">
+                <p>
+                    Copyright &copy; 2019 by Complete Class Calculators. All rights reserved.
+                </p>
+            </div>
+        </footer>
+
+    </body>
+</html>

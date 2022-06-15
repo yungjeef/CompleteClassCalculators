@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/stats.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/homescreen.css') }}">
+
+        <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+
+        <title>Laze Study</title>
+
+        <link rel="manifest" href="{{ url_for('static',filename='/images/fav_icons/site.webmanifest') }}">
+        <link rel="mask-icon" href="{{ url_for('static',filename='/images/fav_icons/safari-pinned-tab.svg') }}" color="#5bbad5">
+        <link rel="shortcut icon" href="{{ url_for('static',filename='/images/fav_icons/favicon.ico') }}">
+        <meta name="msapplication-TileColor" content="#00aba9">
+        <meta name="msapplication-config" content="{{ url_for('static',filename='/images/fav_icons/browserconfig.xml') }}">
+        <meta name="theme-color" content="#ffffff">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </head>
+
+    <body>
+
+        <header>
+            <nav>
+                <div class="row">
+                    <img src="{{ url_for('static',filename='/images/general_photos/logo.png') }}" alt="CCC Logo" class="logo">
+                    <img src="{{ url_for('static',filename='/images/general_photos/logo.png') }}" alt="CCC Logo" class="logo-scroll">
+                    <ul class="main-nav main-nav-output">
+                        <li><h1>LAZE Study</h1></li>
+                        <li><a href="/team">Meet the Team</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="/login">Sign In</a></li>
+                    </ul>
+                    <a class="small-screen-nav nav-icon-popout"><ion-icon name="add-circle"></ion-icon></a>
+                </div>
+            </nav>
+
+            <div class = "slideshow" id="slideshow">
+              <div class="CSSgal">
+                <s id="s1"></s>
+                <s id="s2"></s>
+                <s id="s3"></s>
+                <s id="s4"></s>
+
+                <div class="slider">
+                  <div style="background:#5b8;">
+                    <h2>Intro to Laze</h2>
+                    <img src="{{ url_for('static',filename='/images/homescreen/IMG_1922.jpg') }}">
+                  </div>
+                  <div style="background:#85b;">
+                    <h2>Slide 2</h2>
+                    <img src="{{ url_for('static',filename='/images/homescreen/IMG_3012.jpg') }}">
+                  </div>
+                  <div style="background:#e95;">
+                    <h2>Slide 3</h2>
+                    <img src="{{ url_for('static',filename='/images/homescreen/IMG_3407.jpg') }}">
+                  </div>
+                  <div style="background:#e59;">
+                    <h2>Slide 4</h2>
+                    <img src="{{ url_for('static',filename='/images/homescreen/IMG_7104.jpeg') }}">
+                  </div>
+                </div>
+
+                <div class="prevNext">
+                  <div><a href="#s4"></a><a href="#s2"></a></div>
+                  <div><a href="#s1"></a><a href="#s3"></a></div>
+                  <div><a href="#s2"></a><a href="#s4"></a></div>
+                  <div><a href="#s3"></a><a href="#s1"></a></div>
+                </div>
+
+                <div class="bullets">
+                  <a href="#s1">1</a>
+                  <a href="#s2">2</a>
+                  <a href="#s3">3</a>
+                  <a href="#s4">4</a>
+                </div>
+
+              </div>
+            </div>
+        </header>
+
+    </body>
+</html>

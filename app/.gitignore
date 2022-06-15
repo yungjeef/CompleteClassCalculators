@@ -1,0 +1,6 @@
+secret_keys
+__pycache__/
+*.dat
+*.json
+.DS_store
+IndexerVolumeGuid

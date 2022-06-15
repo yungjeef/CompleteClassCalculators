@@ -1,0 +1,2011 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/mag_pop/magnific-popup.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/vendors/css/normalize.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/vendors/css/grid.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/stats.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/queries.css') }}">
+
+        <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+
+        <title>CCC: Stats</title>
+
+        <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static',filename='images/fav_icons/apple-touch-icon.png') }}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static',filename='images/fav_icons/favicon-32x32.png') }}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static',filename='images/fav_icons/favicon-16x16.png') }}">
+        <link rel="manifest" href="{{ url_for('static',filename='images/fav_icons/site.webmanifest') }}">
+        <link rel="mask-icon" href="{{ url_for('static',filename='images/fav_icons/safari-pinned-tab.svg') }}" color="#5bbad5">
+        <link rel="shortcut icon" href="{{ url_for('static',filename='images/fav_icons/favicon.ico') }}">
+        <meta name="msapplication-TileColor" content="#00aba9">
+        <meta name="msapplication-config" content="{{ url_for('static',filename='images/fav_icons/browserconfig.xml') }}">
+        <meta name="theme-color" content="#ffffff">
+
+
+
+
+
+    </head>
+
+    <body>
+
+        <header>
+            <nav>
+                <div class="row">
+                    <img src="{{ url_for('static',filename='images/general_photos/logo.png') }}" alt="CCC Logo" class="logo">
+                    <img src="{{ url_for('static',filename='images/general_photos/logo.png') }}" alt="CCC Logo" class="logo-scroll">
+
+                    <ul class="main-nav main-nav-output">
+                        <li><a href="/team">Meet the Team</a></li>
+                        <li><a href="/">Classes</a></li>
+<!--
+                        <li>
+                            <div class="dropdown">
+                              <button class="dropbtn">Dropdown</button>
+                              <div class="dropdown-content">
+                                <a href="#">Link 1</a>
+                                <a href="#">Link 2</a>
+                                <a href="#">Link 3</a>
+                              </div>
+                            </div>
+                        </li>
+-->
+<!--                        <li><a href="#">Stats Cheat Sheet</a></li>-->
+                        <li><a href="/logout">Log Out</a></li>
+                    </ul>
+                    <a class="small-screen-nav nav-icon-popout"><ion-icon name="add-circle"></ion-icon></a>
+                </div>
+            </nav>
+
+            <div class="header-box" id="top-of-page">
+              <br>
+              <br>
+                <h1>Complete Class Calculators: Statistics</h1>
+                <a class="btn btn-header" href="#frequency">Frequencies</a>
+                <a class="btn btn-header" href="#stem-and-leaf-plot">Stem And Leaf Plot</a>
+                <a class="btn btn-header" href="#mean-median-mode">Mean/Median/Mode</a>
+                <a class="btn btn-header" href="#iqr">IQR</a>
+                <a class="btn btn-header" href="#variance-sd">Variance/Standard Deviation</a>
+                <a class="btn btn-header" href="#percentiles">Percentiles</a>
+                <a class="btn btn-header" href="#z-score">Z-Score</a>
+                <a class="btn btn-header" href="#correlation-coefficient">Correlation Coefficient</a>
+                <a class="btn btn-header" href="#residuals">Residuals</a>
+                <a class="btn btn-header" href="#probability">Intersect/Union/Difference</a>
+                <a class="btn btn-header" href="#conditional-probability">Conditional Probability</a>
+                <a class="btn btn-header" href="#permutations-combinations">Permutations/Combinations</a>
+                <a class="btn btn-header" href="#random-variables">Random Variables</a>
+                <a class="btn btn-header" href="#sampling-distributions">Sampling Distributions</a>
+                <a class="btn btn-header" href="#">different sections</a>
+                <a class="btn btn-header" href="#">different sections</a>
+                <a class="btn btn-header" href="#">different sections</a>
+                <a class="btn btn-header" href="#">different sections</a>
+                <a class="btn btn-header" href="#">different sections</a>
+                <a class="btn btn-header" href="#">2-Sample Inference</a>
+            </div>
+        </header>
+
+
+
+        <section class="section-features js--nav--bar frequencies" id="frequency">
+            <h2>Frequencies</h2>
+            <div class="row">
+                <div class="col span-1-of-3 box">
+                    <h3>Enter each number seperated by comma</h3>
+
+                    <textarea class="input" name="inputarray" id=inputfrequencytable cols="30" rows="5" placeholder="1,2,3,4,5"></textarea>
+
+                    <h3>Numbers &ge;, &le;, etc (Optional)</h3>
+                    <table class="input-table">
+                        <tr>
+                            <th></th>
+                            <th>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <select id="operatorfrequency" style="width: 50px;" onchange="frequencyBoxAppear();">
+                                    <option value="0">&#61;</option>
+                                    <option value="4">&ge;</option>
+                                    <option value="1">&gt;</option>
+                                    <option value="2" selected>&lt;</option>
+                                    <option value="5">&le;</option>
+                                    <option value="3"><h4>in between (not including)</h4></option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="text" id=frequencyCalc1 class="extra-input-box">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id="textfrequencyCalc2" class="hide">
+                               <h4 style="text-align: center;">and</h4>
+                            </td>
+                            <td>
+                                <input type="text" id=frequencyCalc2 class="hide extra-input-box">
+                            </td>
+                        </tr>
+                    </table>
+                    <textarea name="outputarray" id=calculatenumberans style="margin-top: 15px;" class="output" cols="30" rows="2" disabled></textarea>
+                </div>
+                <div class="col span-1-of-3 box">
+                     <h3>Absolute Value </h3>
+                    <textarea name="outputarray" id=outputabsolutefrequencytable class="output" cols="30" rows="5" disabled></textarea>
+
+                    <h3>Frequencies</h3>
+                    <textarea name="outputarray" id=outputfrequencytable class="output" cols="30" rows="5" disabled></textarea>
+
+                    <button type="button" id="calculatefrequencies" class="button">Answer </button>
+                </div>
+                <div class="col span-1-of-3 box">
+                    <a class="formula middle-formula" href="{{ url_for('static',filename='images/formula-pics/frequency-formula.png') }}">Formula</a>
+                    <a href="https://www.youtube.com/watch?v=YlKL62Fz_RI" class="video">Video</a>
+                </div>
+            </div>
+            <h3>Graph Interval Length:</h3>
+            <input type="text" id=frequencygraphinterval style="width: 60px; text-align: center;" class="input" value="10" onchange="frequencyFromArray();">
+            <div class="plot" id="frequencyPlot" style="width:600px;height:250px;" ></div>
+        </section>
+
+
+
+        <section class="section-features stem-and-plot" id="stem-and-leaf-plot">
+            <h2>Stem And Leaf Plot</h2>
+            <div class="row">
+                <div class="col span-1-of-3 box">
+                    <h3>Enter each number seperated by comma</h3>
+                    <table class="input-table">
+                        <thead>
+                            <th>Stem</th>
+                            <th>Leaf</th>
+                        </thead>
+                        <tr>
+                            <td>0</td><td><input type="text" id=stemandplot0  ></td>
+                        </tr>
+                        <tr>
+                            <td>1</td><td><input type="text" id=stemandplot1 ></td>
+                        </tr>
+                        <tr>
+                            <td>2</td><td><input type="text" id=stemandplot2  ></td>
+                        </tr>
+                        <tr>
+                            <td>3</td><td><input type="text" id=stemandplot3  ></td>
+                        </tr>
+                        <tr>
+                            <td>4</td><td><input type="text" id=stemandplot4  ></td>
+                        </tr>
+                        <tr>
+                            <td>5</td><td><input type="text" id=stemandplot5  ></td>
+                        </tr>
+                        <tr>
+                            <td>6</td><td><input type="text" id=stemandplot6  ></td>
+                        </tr>
+                        <tr>
+                            <td>7</td><td><input type="text" id=stemandplot7  ></td>
+                        </tr>
+                        <tr>
+                            <td>8</td><td><input type="text" id=stemandplot8  ></td>
+                        </tr>
+                        <tr>
+                            <td>9</td><td><input type="text" id=stemandplot9  ></td>
+                        </tr>
+                        <tr>
+                            <td>10</td><td><input type="text" id=stemandplot10  ></td>
+                        </tr>
+                    </table>
+                    <h3>Numbers &ge;, &le;, etc (Optional)</h3>
+                    <table class="input-table">
+                        <tr>
+                            <th></th>
+                            <th>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <select id="sandpoperatorfrequency" style="width: 50px;" class=operator onchange="stemAndPlotBoxAppear();">
+                                    <option value="0">&#61;</option>
+                                    <option value="4">&ge;</option>
+                                    <option value="1">&gt;</option>
+                                    <option value="2" selected>&lt;</option>
+                                    <option value="5">&le;</option>
+                                    <option value="3">in between (not including)</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="text" id=sandpCalc1 class="extra-input-box">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id="textsandpCalc2" class="hide">
+                               <h4 style="text-align: center;">and</h4>
+                            </td>
+                            <td>
+                                <input type="text" class="hide extra-input-box" id=sandpCalc2>
+                            </td>
+                        </tr>
+                    </table>
+                    <textarea name="outputarray" id=calculatestemandplotans style="margin-top: 15px;" class="output" cols="30" rows="2" disabled></textarea>
+                </div>
+                <div class="col span-1-of-3 box">
+                    <h3>Answer Table</h3>
+                    <table class="output-table">
+                        <tr>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <td>Sum:</td>
+                            <td><input type="number" id=averagetablesum2  class=output disabled></td>
+                        </tr>
+                        <tr>
+                            <td>Median:</td>
+                            <td><input type="number" id=averagetablemedian2  class=output disabled></td>
+                        </tr>
+                        <tr>
+                            <td>Mean:</td>
+                            <td><input type="number" id=averagetablemean2  class=output disabled></td>
+                        </tr>
+                         <tr>
+                            <td>Largest:</td>
+                            <td><input type="text" id=averagetablelargest  class=output disabled></td>
+                        </tr>
+                         <tr>
+                            <td>Smallest:</td>
+                            <td><input type="text" id=averagetablesmallest  class=output disabled></td>
+                        </tr>
+                    </table>
+                    <button type="button" style="margin-top: 100px;" id="calculatestemandplot" class="button">Answer </button>
+                </div>
+                <div class="col span-1-of-3 box">
+                    <a class="formula middle-formula" href="{{ url_for('static',filename='images/formula-pics/stem-and-leaf-formula.png') }}">Formula</a>
+                    <a href="https://www.youtube.com/watch?v=YlKL62Fz_RI" class="video">Video</a>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="section-features mean-median-mode" id="mean-median-mode">
+            <h2>Mean/Median/Mode</h2>
+            <div class="row">
+                <div class="col span-1-of-3 box">
+                    <h3>Enter each number seperated by comma</h3>
+                    <textarea class="input" name="inputarray" id=inputarraytable cols="30" rows="5" placeholder="1,2,3,4,5"></textarea>
+                </div>
+                <div class="col span-1-of-3 box">
+                    <h3>Answer Table</h3>
+                    <table class="output-table">
+                        <tr>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <td>Sum:</td>
+                            <td><input type="number" id=averagetablesum  class=output disabled></td>
+                        </tr>
+                        <tr>
+                            <td>Median:</td>
+                            <td><input type="number" id=averagetablemedian  class=output disabled></td>
+                        </tr>
+                        <tr>
+                            <td>Mode:</td>
+                            <td><input type="text" id=averagetablemode  class=output disabled></td>
+                        </tr>
+                        <tr>
+                            <td>Mean (average):</td>
+                            <td><input type="number" id=averagetablemean  class=output disabled></td>
+                        </tr>
+                        <tr>
+                            <td>MAD:</td>
+                            <td><input type="number" id=IQRtablemad  class=output disabled></td>
+                        </tr>
+                    </table>
+                    <button type="button" id="calculateaverage" class="button">Answer</button>
+                </div>
+                <div class="col span-1-of-3 box">
+                    <div class="mean-mode-median-gallery">
+                        <a class="formula top-formula gallery" href="{{ url_for('static',filename='images/formula-pics/mean-formula.png') }}">Formulas</a>
+                        <a href="{{ url_for('static',filename='images/formula-pics/median-formula.png') }}" class="gallery"></a>
+                        <a href="{{ url_for('static',filename='images/formula-pics/mode-formula.png') }}" class="gallery"></a>
+                        <a href="{{ url_for('static',filename='images/formula-pics/mad-formula.png') }}" class="gallery"></a>
+                    </div>
+                    <a href="https://www.youtube.com/watch?v=YlKL62Fz_RI" class="video">Video</a>
+                </div>
+            </div>
+        </section>
+
+
+
+
+        <section class="section-features iqr" id="iqr">
+            <h2>Interquartile Range (IQR)</h2>
+            <div class="row">
+                <div class="col span-1-of-3 box">
+                    <h3>Enter each number seperated by comma <br> (5 numbers minimum)</h3>
+                     <textarea placeholder="1,2,3,4,5" class="input" name="inputIQR" id=inputIQRtable cols="30" rows="5"></textarea>
+                </div>
+                <div class="col span-1-of-3 box">
+                    <h3>Answer Table</h3>
+                    <table class="output-table">
+                        <tr>
+                            <th></th><th></th>
+                        </tr>
+                        <tr>
+                            <td>Q1:</td><td><input type="number" id=IQRtableq1  class=output disabled></td>
+                        </tr>
+                        <tr>
+                            <td>Median (Q2):</td><td><input type="number" id=IQRtablemedian  class=output disabled></td>
+                        </tr>
+                        <tr>
+                            <td>Q3:</td><td><input type="number" id=IQRtableq3  class=output disabled></td>
+
+                        </tr>
+                        <tr>
+                            <td>IQR:</td><td><input type="number" id=IQRtableIQR  class=output disabled></td>
+                        </tr>
+                        <tr>
+                            <td>Range:</td><td><input type="number" id=IQRtablerange  class=output disabled></td>
+                        </tr>
+                        <tr>
+                            <td>Outliers:</td><td><input type="text" id=IQRtableoutliers  class=output disabled></td>
+                        </tr>
+                        <tr>
+                            <td>Mid-Range:</td><td><input type="number" id=IQRtablemidrange  class=output disabled></td>
+                        </tr>
+                        <tr>
+                            <td>Lower Fence:</td><td><input type="number" id=IQRtablelowerfence  class=output disabled></td>
+                        </tr>
+                        <tr>
+                            <td>Upper Fence:</td><td><input type="number" id=IQRtableupperfence class=output disabled></td>
+                        </tr>
+                    </table>
+                    <button type="button" id="calculateIQR" class="button">Answer </button>
+                </div>
+                <div class="col span-1-of-3 box">
+                    <div class="iqr-gallery">
+                        <a class="formula top-formula gallery2" href="{{ url_for('static',filename='images/formula-pics/iqr1-formula.png') }}">Formulas</a>
+                        <a href="{{ url_for('static',filename='images/formula-pics/iqr2-formula.png') }}" class="gallery2"></a>
+                    </div>
+                    <a href="https://www.youtube.com/watch?v=YlKL62Fz_RI" class="video">Video</a>
+                </div>
+            </div>
+            <div class="plot" id="boxplot" style="width:600px;height:250px;"></div>
+        </section>
+
+
+
+
+        <section class="section-features variance-sd" id="variance-sd">
+            <h2>Variance/Standard Deviation</h2>
+            <div class="row">
+                <div class="col span-1-of-3 box">
+                    <h3>Enter each number seperated by comma</h3>
+                    <textarea class="input" name="input" id=inputpopVarianceSDtable cols="30" rows="5" placeholder="1,2,3,4,5"></textarea>
+                </div>
+                <div class="col span-1-of-3 box">
+                    <table class="input-table">
+                        <th></th><th></th>
+                        <tr>
+                            <td><input style="width: 20px;" type="radio" name= "varsdsamOrpop" value="0" checked id="variance-sd-sam-or-pop" onchange="populationOrSampleVarianceSDShow();"></td>
+                            <td>Population</td>
+                        </tr>
+                        <tr>
+                            <td><input style="width: 20px;" type="radio" name= "varsdsamOrpop" value="1" onchange="populationOrSampleVarianceSDShow();"></td>
+                            <td>Sample</td>
+                        </tr>
+
+                    </table>
+                    <h3 id="variance-sd-pop-text">Population</h3>
+                    <table class="output-table" id="variance-sd-pop-table">
+                        <tr>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <td>Mean (μ):</td>
+                            <td><input type="number" id=popVarSDtablemean  class=output disabled></td>
+                        </tr>
+                        <tr>
+                            <td>Variance (σ<sup>2</sup>):</td>
+                            <td><input type="number" id=popVarSDtablevar  class=output disabled></td>
+                        </tr>
+                        <tr>
+                            <td>sd (σ):</td>
+                            <td><input type="number" id=popVarSDtablesd class=output disabled></td>
+                        </tr>
+                    </table>
+                    <h3 class="hide" id="variance-sd-sam-text">Sample</h3>
+                    <table class="output-table hide" id="variance-sd-sam-table">
+                        <tr>
+                            <th></th><th></th>
+                        </tr>
+                        <tr>
+                            <td>Mean (x̅):</td><td><input type="number" id=samVarSDtablemean  class=output disabled></td>
+                        </tr>
+                        <tr>
+                            <td>Variance (s<sup>2</sup>):</td><td><input type="number" id=samVarSDtablevar  class=output disabled></td>
+                        </tr>
+                        <tr>
+                            <td>sd (s):</td><td><input type="number" id=samVarSDtablesd class=output disabled></td>
+                        </tr>
+                    </table>
+                    <button type="button" id="calculatepopVarianceSD" class="button">Answer</button>
+                </div>
+                <div class="col span-1-of-3 box">
+                    <div class="pop-sam-gallery">
+                        <a class="formula top-formula gallery3" href="{{ url_for('static',filename='images/formula-pics/pop-sam-mean-formula.png') }}">Formulas</a>
+                        <a href="{{ url_for('static',filename='images/formula-pics/pop-sam-variance-formula.png') }}" class="gallery3"></a>
+                        <a href="{{ url_for('static',filename='images/formula-pics/pop-sam-sd-formula.png') }}" class="gallery3"></a>
+                    </div>
+                    <a href="https://www.youtube.com/watch?v=YlKL62Fz_RI" class="video">Video</a>
+                </div>
+            </div>
+        </section>
+
+
+
+
+        <section class="section-features" id="percentiles">
+            <h2>Percentiles</h2>
+            <div class="row">
+                <div class="col span-1-of-3 box">
+                    <h3>Enter each number seperated by comma</h3>
+                    <textarea class="input" name="input" id=inputpercentile cols="30" rows="5" placeholder="1,2,3,4,5"></textarea>
+                    <h3>Find Percentile By Number (Ex: 7)</h3>
+                    <table class="input-table">
+                        <tr>
+                            <th></th><th></th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <select id="percentileoperator" class=operator>
+                                    <option value="0" selected>&lt;</option>
+                                    <option value="1">&le;</option>
+                                </select>
+                            </td>
+                            <td><input class="extra-input-box" type="text" id=percentilecalc placeholder="7" onchange="hidePercentileBox();"></td>
+                        </tr>
+                    </table>
+                    <h3>Find Number By Percentile (Ex: 70th percentile)</h3>
+                    <table class="input-table">
+                        <tr>
+                            <th></th><th></th>
+                        </tr>
+                        <tr>
+                            <td><input class="extra-input-box" type="text" id=percentilecalc2 placeholder="0.70" onchange="hidePercentileBox();"></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col span-1-of-3 box">
+                    <h3 id="percentile-text-1">Percentile</h3>
+                    <h3 id="percentile-text-2" class="hide">Number</h3>
+                    <input type="number" id=percentiletableans class=output disabled>
+                    <button style="margin-top: 75px;" type="button" id="calculatepercentile" class="button">Answer</button>
+                </div>
+                <div class="col span-1-of-3 box">
+                    <div class="percentile-gallery">
+                        <a class="formula top-formula gallery4" href="{{ url_for('static',filename='images/formula-pics/percentile-percentile-formula.png') }}">Formulas</a>
+                        <a href="{{ url_for('static',filename='images/formula-pics/percentile-number-formula.png') }}" class="gallery4"></a>
+                    </div>
+                    <a href="https://www.youtube.com/watch?v=YlKL62Fz_RI" class="video">Video</a>
+                </div>
+            </div>
+        </section>
+
+
+
+        <section class="section-features" id="z-score">
+            <h2>Z-Score</h2>
+            <div class="row">
+                <div class="col span-1-of-3 box">
+                    <h3>Input Table</h3>
+                    <table class="input-table">
+                        <tr>
+                            <th></th><th></th>
+                        </tr>
+                        <tr>
+                            <td>Mean:</td><td><input type="text" id=zscoremeansolve style="width: 50px;"></td>
+
+                        </tr>
+                        <tr>
+                            <td>Standard Deviation: &nbsp;</td><td><input type="text" id=zscoresdsolve style="width: 50px;"></td>
+
+                        </tr>
+                        <tr>
+                            <td id="z-table-input-xvalue">X-Value:</td>
+                            <td id="z-table-input-percentile" class="hide">Percentile:</td>
+                            <td id="z-table-inputoperator" class="hide">
+                                <select id="zscoreoperator" style="width: 100px;" onchange="ZScoreOption();">
+                                    <option value="1">&gt;</option>
+                                    <option value="2" selected>&lt;</option>
+                                    <option value="3">in between</option>
+                                </select>
+                            </td>
+                            <td><input type="text" id=zscorexvaluesolve style="width: 50px;"></td>
+                        </tr>
+                        <tr>
+                            <td id="zscoretext" class="hide"><h4 style="text-align: center;">2nd X-Value</h4></td>
+                            <td><input type="text" id="zscorex2" class="hide extra-input-box"></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col span-1-of-3 box">
+                    <table class="input-table" >
+                        <th></th><th></th>
+                        <tr>
+                            <td><input style="width: 20px;" type="radio" name= "z-score-option" value="0" checked id="z-score-option1" onchange="ZScoreOption();"></td>
+                            <td>Z-Score</td>
+                        </tr>
+                        <tr>
+                            <td><input style="width: 20px;" type="radio" name= "z-score-option" value="1" id="z-score-option2" onchange="ZScoreOption();"></td>
+                            <td>Percentile From Z-Score</td>
+                        </tr>
+                        <tr>
+                            <td><input style="width: 20px;" type="radio" name= "z-score-option" value="2" onchange="ZScoreOption();"></td>
+                            <td>Z-Score From Percentile</td>
+                        </tr>
+                    </table>
+                    <h3 style="margin-top: 50px;" id="z-score-z-text">Z-Score Answer</h3>
+                    <h3 class="hide" style="margin-top: 50px;" id="z-score-percentile-text">Percentile</h3>
+                    <input type="number" id="zscoresolveoutputtableans" class="output" disabled>
+                    <h3 class="hide" style="margin-top: 50px;" id="z-score-xvalue-text">Z-Table-Value</h3>
+                    <input type="number" id=zscoresolveoutputtableans2 class="output hide" disabled>
+                    <button type="button" id="solvezscore" class="button">Answer</button>
+                </div>
+                <div class="col span-1-of-3 box">
+                    <div class="z-score-gallery">
+                        <a class="formula top-formula gallery5" href="{{ url_for('static',filename='images/formula-pics/z-score-formula.png') }}">Formulas</a>
+                        <a href="{{ url_for('static',filename='images/formula-pics/z-score-percentile-formula.png') }}" class="gallery5"></a>
+                        <a href="{{ url_for('static',filename='images/formula-pics/z-score-xvalue-formula.png') }}" class="gallery5"></a>
+                    </div>
+                    <a href="https://www.youtube.com/watch?v=YlKL62Fz_RI" class="video">Video</a>
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+        <section class="section-features" id="correlation-coefficient">
+            <h2>Correlation Coefficient</h2>
+            <div class="row">
+                <div class="col span-1-of-3 box">
+                    <h3>Enter each number seperated by comma</h3>
+                    <table class="input-table">
+                        <tr>
+                            <th>
+                                X Values
+                            </th>
+                            <th>
+                                Y Values
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <textarea name="input" id=inputcorrelationCoefficientX cols="20" rows="5"></textarea>
+                            </td>
+                            <td>
+                                <textarea name="input" id=inputcorrelationCoefficientY cols="20" rows="5"></textarea>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col span-1-of-3 box">
+                    <div class="correlation-coefficient-ex-gallery">
+                        <a class="examples gallery6" href="{{ url_for('static',filename='images/formula-pics/correlation-coefficient-ex-perfect-positive.png') }}">Examples</a>
+                        <a href="{{ url_for('static',filename='images/formula-pics/correlation-coefficient-ex-perfect-negative.png') }}" class="gallery6"></a>
+                        <a href="{{ url_for('static',filename='images/formula-pics/correlation-coefficient-ex-strong-positive.png') }}" class="gallery6"></a>
+                        <a href="{{ url_for('static',filename='images/formula-pics/correlation-coefficient-ex-strong-negative.png') }}" class="gallery6"></a>
+                        <a href="{{ url_for('static',filename='images/formula-pics/correlation-coefficient-ex-moderate-positive.png') }}" class="gallery6"></a>
+                        <a href="{{ url_for('static',filename='images/formula-pics/correlation-coefficient-ex-moderate-negative.png') }}" class="gallery6"></a>
+                        <a href="{{ url_for('static',filename='images/formula-pics/correlation-coefficient-ex-weak-positive.png') }}" class="gallery6"></a>
+                        <a href="{{ url_for('static',filename='images/formula-pics/correlation-coefficient-ex-weak-negative.png') }}" class="gallery6"></a>
+                        <a href="{{ url_for('static',filename='images/formula-pics/correlation-coefficient-ex-non-linear.png') }}" class="gallery6"></a>
+                    </div>
+                    <h3>Answer Table</h3>
+                    <table class="output-table">
+                        <tr>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <td>r:</td>
+                            <td><input type="number" id=correlationcoefficientanswer class=output disabled></td>
+                        </tr>
+                        <tr>
+                            <td>r<sup>2</sup>:</td>
+                            <td><input type="number" id=rsquaredanswer class=output disabled></td>
+                        </tr>
+                        <tr>
+                            <td>Regression Line:</td>
+                            <td><input type="text" id=regressionlineanswer class=output disabled></td>
+                        </tr>
+                        <tr>
+                            <td>RMSE:</td>
+                            <td><input type="number" id=rmseanswer class=output disabled></td>
+                        </tr>
+                    </table>
+                    <button type="button" id="calculatecorrelationcoefficient" class="button">Answer</button>
+                </div>
+                <div class="col span-1-of-3 box">
+                    <a class="formula top-formula" href="">Formula</a>
+                    <a href="https://www.youtube.com/watch?v=YlKL62Fz_RI" class="video">Video</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col span-1-of-2 box">
+                    <div class="plot" id="scatterplot" style="width:500px;height:250px;"></div>
+                </div>
+                <div class="col span-1-of-2 box">
+                    <div class="plot" id="residualplot" style="width:500px;height:250px;"></div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+        <section class="section-features" id="residuals">
+            <h2>Residuals</h2>
+            <div class="row">
+                <div class="col span-1-of-3 box">
+                    <h3>Enter the least squares regression equation:</h3>
+                    <table class="input-table">
+                        <tr>
+                            <th></th><th></th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h4>&nbsp;ŷ = &nbsp;</h4>
+                            </td>
+                            <td style="width: 100px;">
+                                <input style="float: left; width: 37%;" type="text" id=residualxvalue>
+                                <h4 style="float: left;">x + &nbsp;</h4>
+                                <input style="width: 37%;" type="text" id=residualbvalue>
+                            </td>
+                        </tr>
+                    </table>
+                    <h3>Enter the test x and y values below:</h3>
+                    <table class="input-table">
+                        <tr>
+                            <th></th><th></th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h4>&nbsp;x:&nbsp;</h4>
+                            </td>
+                            <td style="width: 40px;">
+                                <input style="width: 100%" type="text" id=residualxtest>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h4>&nbsp;y:&nbsp;</h4>
+                            </td>
+                            <td style="width: 40px;">
+                                <input style="width: 100%" type="text" id=residualytest>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div class="col span-1-of-3 box">
+                    <h3>Residual</h3>
+                    <div>
+                        <table style="" class="output-table" >
+                            <tr>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                            <tr>
+                                <td>residual:</td>
+                                <td><input type="number" id=residualanswer class=output disabled></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <button type="button" id="calculateresidual" class="button">Answer
+                    </button>
+                </div>
+                <div class="col span-1-of-3 box">
+                    <a class="formula top-formula" href="">Formula</a>
+                    <a href="https://www.youtube.com/watch?v=YlKL62Fz_RI" class="video">Video</a>
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+        <section class="section-features" id="probability">
+            <h2>Intersect/Union/Difference</h2>
+            <div class="row">
+                <div class="col span-1-of-3 box">
+                    <h3>Enter each number seperated by a comma</h3>
+                    <table class="input-table">
+                        <tr>
+                            <th>
+                                Set #1
+                            </th>
+                            <th>
+                                Set #2
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <textarea name="input" id=inputintersectionunion1 cols="15" rows="5"></textarea>
+                            </td>
+                            <td>
+                                <textarea name="input" id=inputintersectionunion2 cols="15" rows="5"></textarea>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col span-1-of-3 box">
+                    <h3>Answer Table</h3>
+                    <table class="output-table" >
+                        <tr>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <td>Intersect (X&cap;Y):</td>
+                            <td><input size="30" type="text" id=xintersectanswer class=output disabled></td>
+                        </tr>
+                        <tr>
+                            <td>Union (X&cup;Y):</td>
+                            <td><input size="30" type="text" id=xunionyanswer class=output disabled></td>
+                        </tr>
+                        <tr>
+                            <td>A\B (A-B):</td>
+                            <td><input size="30" type="text" id=aminusbrelativecomplement class=output disabled></td>
+                        </tr>
+                        <tr>
+                            <td>B\A (B-A):</td>
+                            <td><input size="30" type="text" id=bminusarelativecomplement class=output disabled></td>
+                        </tr>
+                    </table>
+                    <button type="button" id="calculateintersectionunion" class="button">Answer</button>
+                </div>
+                <div class="col span-1-of-3 box">
+                    <a class="formula top-formula" href="">Formula</a>
+                    <a href="https://www.youtube.com/watch?v=YlKL62Fz_RI" class="video">Video</a>
+                </div>
+            </div>
+        </section>
+
+
+
+        <section class="section-features" id="conditional-probability">
+            <h2>Conditional Probability</h2>
+            <div class="row">
+                <div class="col span-1-of-3 box">
+                    <h3>1) Enter <i>P(A)</i> <big><em><b>or</b></em></big> <i>P(B)</i>, or both if available <br>2) Enter <big><em><b>either</b></em></big> <i>P(A|B)</i>, <i>P(B|A)</i>, or <i>P(A and B)</i></h3>
+                    <table class="input-table" style="font-size: 90%">
+                        <tr>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <td>P(A):</td>
+                            <td style="width: 60%"><input type="text" id=proba ></td>
+                        </tr>
+                        <tr>
+                            <td>P(B):</td>
+                            <td><input type="text" id=probb></td>
+                        </tr>
+                        <tr>
+                            <td>P(A|B):</td>
+                            <td><input  type="text" id=probagivb onchange="hideConditionalBox();"></td>
+                        </tr>
+                        <tr>
+                            <td>P(B|A):</td>
+                            <td><input  type="text" id=probbgiva onchange="hideConditionalBox();"></td>
+                        </tr>
+                        <tr>
+                            <td>P(A and B):</td>
+                            <td><input  type="text" id=probaandb onchange="hideConditionalBox();"></td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div class="col span-1-of-3 box">
+                    <h3>Answer Table</h3>
+                    <table class="output-table" >
+                        <tr>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <td>P(A|B):</td>
+                            <td><input type="number" id=probagivbans class=output disabled></td>
+                        </tr>
+                        <tr>
+                            <td>P(B|A):</td>
+                            <td><input type="number" id=probbgivaans class=output disabled></td>
+                        </tr>
+                        <tr>
+                            <td>P(A and B):</td>
+                            <td><input type="number" id=probaandbans class=output disabled></td>
+                        </tr>
+                    </table>
+                    <button type="button" id="calculateconditionalprob" class="button">Answer</button>
+                </div>
+                <div class="col span-1-of-3 box">
+                    <a class="formula top-formula" href="">Formula</a>
+                    <a href="https://www.youtube.com/watch?v=YlKL62Fz_RI" class="video">Video</a>
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+        <section class="section-features" id="permutations-combinations">
+            <h2>Permutations and Combinations</h2>
+            <div class="row">
+                <div class="col span-1-of-3 box">
+                    <h3>Enter n (permutations) and <br> k (number of spots)</h3>
+                    <table class="input-table">
+                        <tr>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <td>&nbsp; n: &nbsp;</td>
+                            <td><input  type="text" id=permcondn ></td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp; k: &nbsp;</td>
+                            <td><input type="text" id=permcondk></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col span-1-of-3 box">
+                    <h3>Answer Table</h3>
+                    <table class="output-table" >
+                        <tr>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <td>Permutation (<sub>n</sub>P<sub>k</sub>):</td>
+                            <td><input type="number" id=permans class=output disabled></td>
+                        </tr>
+                        <tr>
+                            <td>Combination (<sub>n</sub>C<sub>k</sub>):</td>
+                            <td><input type="number" id=combans class=output disabled></td>
+                        </tr>
+                    </table>
+                    <button type="button" id="calculatepermandcomb" class="button">Answer
+                    </button>
+                </div>
+                <div class="col span-1-of-3 box">
+                    <a class="formula top-formula" href="">Formula</a>
+                    <a href="https://www.youtube.com/watch?v=YlKL62Fz_RI" class="video">Video</a>
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+        <section class="section-features" id="random-variables">
+            <h2>Random Variables</h2>
+            <div class="row">
+                <div class="col span-1-of-3 box">
+                    <h3>Enter in the X-values and EITHER the raw numbers OR the probabilities</h3>
+                    <table class="input-table">
+                        <tr>
+                            <td>&nbsp; # of X Values &nbsp;
+                            </td>
+                            <td style="width: 10px;">
+                                <select style="float: " id="numofXval" class=operator onchange="discreteTableDisplay()">
+                                    <option value="0" selected>0</option>
+                                    <option value="1" >1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                &nbsp; Type of Entry &nbsp;
+                            </td>
+                            <td>
+                                <select style="width: 41.5px;" id="raworprob" class=operator onchange="discreteTableDisplay()">
+                                    <option value="0" selected></option>
+                                    <option value="1" >Raw Entries</option>
+                                    <option value="2" >Probability Entries</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <table style="margin-top: 10px; font-size: 70%" class="input-table" >
+                        <tr>
+                            <th><u>X-Values</u></th>
+                            <th><u>Raw Values</u></th>
+                            <th><u>Probabilities</u></th>
+                        </tr>
+                        <tr>
+                            <td><input  type="text" id=x1 class=output disabled></td>
+                            <td><input  type="text" id=r1 class=output disabled></td>
+                            <td><input  type="text" id=p1 class=output disabled></td>
+                        </tr>
+                        <tr>
+                            <td><input  type="text" id=x2 class=output disabled></td>
+                            <td><input  type="text" id=r2 class=output disabled></td>
+                            <td><input  type="text" id=p2 class=output disabled></td>
+                        </tr>
+                        <tr>
+                            <td><input  type="text" id=x3 class=output disabled></td>
+                            <td><input  type="text" id=r3 class=output disabled></td>
+                            <td><input  type="text" id=p3 class=output disabled></td>
+                        </tr>
+                        <tr>
+                            <td><input  type="text" id=x4 class=output disabled></td>
+                            <td><input  type="text" id=r4 class=output disabled></td>
+                            <td><input  type="text" id=p4 class=output disabled></td>
+                        </tr>
+                        <tr>
+                            <td><input  type="text" id=x5 class=output disabled></td>
+                            <td><input  type="text" id=r5 class=output disabled></td>
+                            <td><input  type="text" id=p5 class=output disabled></td>
+                        </tr>
+                        <tr>
+                            <td><input  type="text" id=x6 class=output disabled></td>
+                            <td><input  type="text" id=r6 class=output disabled></td>
+                            <td><input  type="text" id=p6 class=output disabled></td>
+                        </tr>
+                        <tr>
+                            <td><input  type="text" id=x7 class=output disabled></td>
+                            <td><input  type="text" id=r7 class=output disabled></td>
+                            <td><input  type="text" id=p7 class=output disabled></td>
+                        </tr>
+                        <tr>
+                            <td><input  type="text" id=x8 class=output disabled></td>
+                            <td><input  type="text" id=r8 class=output disabled></td>
+                            <td><input  type="text" id=p8 class=output disabled></td>
+                        </tr>
+                        <tr>
+                            <td><input  type="text" id=x9 class=output disabled></td>
+                            <td><input  type="text" id=r9 class=output disabled></td>
+                            <td><input  type="text" id=p9 class=output disabled></td>
+                        </tr>
+                        <tr>
+                            <td><input  type="text" id=x10 class=output disabled></td>
+                            <td><input  type="text" id=r10 class=output disabled></td>
+                            <td><input  type="text" id=p10 class=output disabled></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col span-1-of-3 box">
+                    <h3>Answer Table</h3>
+                    <table class="output-table">
+                        <tr>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <td>MEV: E(X)</td>
+                            <td><input type="text" id=discretevartableanswermev  class=output disabled></td>
+                        </tr>
+                        <tr>
+                            <td>Variance: Var(X)</td>
+                            <td><input type="text" id=discretevartableanswervar class=output disabled></td>
+                        </tr>
+                        <tr>
+                            <td>Standard Deviation (sd):</td>
+                            <td><input type="number" id=discretevartableanswersd  class=output disabled></td>
+                        </tr>
+                    </table>
+
+                    <table class="output-table" style="width: 300px; margin-top: 20px;">
+                        <tr>
+                            <th>
+                            </th>
+                            <th>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                                P(X
+                                <select style="width: 35px; height: 23px; margin-top: 4px;" id="operatorprobofX" class=operator >
+                                    <option value="0">&#61;</option>
+                                    <option value="4">&ge;</option>
+                                    <option value="1">&gt;</option>
+                                    <option value="2">&lt;</option>
+                                    <option value="5">&le;</option>
+                                </select>
+                                <input style="float:; width: 30px; margin-bottom: 2px; padding-bottom: : 0px;" type="text" id=xinputdiscreteranvar>
+                                ) = &nbsp;
+                            </td>
+                            <td>
+                                <input style="float:; " type="number" id=xoutputdiscreteranvar class=output disabled>
+                            </td>
+                        </tr>
+                    </table>
+                    <button style="" type="button" id="calculatediscreteranvar" class="button">Answer</button>
+                </div>
+                <div class="col span-1-of-3 box">
+                    <a class="formula middle-formula" href="">Formula</a>
+                    <a href="https://www.youtube.com/watch?v=YlKL62Fz_RI" class="video">Video</a>
+                </div>
+            </div>
+        </section>
+
+
+
+
+        <section class="section-features" id="sampling-distributions">
+            <h2>Sampling Distributions</h2>
+            <div class="row">
+                <div class="col span-1-of-3 box">
+                    <h3>Input Table</h3>
+                    <table class="input-table">
+                        <tr>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <td>P (population proportion):</td>
+                            <td><input type="text" id=populationmean ></td>
+
+                        </tr>
+                        <tr>
+                            <td>n (sample size):</td>
+                            <td><input type="text" id=populationn></td>
+
+                        </tr>
+                    </table>
+                    <br>
+                    <table class="input-table">
+                        <tr>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <td>P(x̅)
+                            </td>
+                            <td>
+                                <select style="width: px;" id="popproboperator" class=operator onchange="poppropBoxAppear();">
+                                    <option value="1">&gt;</option>
+                                    <option value="2" selected>&lt;</option>
+                                    <option value="3">in between</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="number" id=populationprobability>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td id="popprobtext" class="hide"> and
+                            </td>
+                            <td> <input type="number" class="hide" id="populationprobability2" >
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col span-1-of-3 box">
+                </div>
+                <div class="col span-1-of-3 box">
+                    <a class="formula middle-formula" href="">Formula</a>
+                    <a href="https://www.youtube.com/watch?v=YlKL62Fz_RI" class="video">Video</a>
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+
+<!--        template -->
+
+<!--
+        <section class="section-features" id="">
+            <h2>Title of Calc</h2>
+            <div class="row">
+                <div class="col span-1-of-3 box">
+                </div>
+                <div class="col span-1-of-3 box">
+                </div>
+                <div class="col span-1-of-3 box">
+                    <a class="formula middle-formula" href="">Formula</a>
+                    <a href="https://www.youtube.com/watch?v=YlKL62Fz_RI" class="video">Video</a>
+                </div>
+            </div>
+        </section>
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div class="section">
+            <h2>Section 10: Sampling Distributions</h2>
+
+
+            <div class="sampleproportion">
+            <h3><u>Sampling Distribution of a Sample Proportion</u></h3>
+                <br>
+                <h4>Enter all fields below</h4>
+
+            </div>
+
+            <table class="sampleproportiontable">
+                <tr>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <td>P (population proportion):</td>
+                    <td><input type="text" id=populationmean ></td>
+
+                </tr>
+                <tr>
+                    <td>n (sample size):</td>
+                    <td><input type="text" id=populationn></td>
+
+                </tr>
+            </table>
+
+            <br>
+            <table class="sampleproportiontable">
+                <tr>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <td>P(x̅)
+                    </td>
+                    <td>
+                        <select id="popproboperator" class=operator onchange="poppropBoxAppear();">
+                            <option value="1">&gt;</option>
+                            <option value="2" selected>&lt;</option>
+                            <option value="3">in between</option>
+                        </select>
+                    </td>
+                    <td>
+                        <input type="number" id=populationprobability>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td id="popprobtext" class="hide"> and
+                    </td>
+                    <td> <input type="number" class="hide" id="populationprobability2" >
+                    </td>
+                </tr>
+            </table>
+
+
+
+
+                <br>
+                <button type="button" id="calculatepopulationprobability" class="button">Calculate Probability!</button>
+
+
+            <br><br><br>
+
+
+
+            <table class="poppropanswer">
+            <tr>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr>
+                <td>n*p ≥ 10:</td>
+                <td><input type="text" id=approxnormcheck1  class=output disabled></td>
+
+            </tr>
+            <tr>
+                <td>n*(1-p) ≥ 10:</td>
+                <td><input type="text" id=approxnormcheck2 class=output disabled></td>
+
+            </tr>
+            <tr>
+                <td>sd:</td>
+                <td><input type="number" id=poppropanswersd  class=output disabled></td>
+
+            </tr>
+            <tr>
+                <td>Probability:</td>
+                <td><input type="number" id=poppropanswerprob  class=output disabled></td>
+
+            </tr>
+
+            </table>
+
+
+
+
+            <div class="samplemean">
+            <h3><u>Sampling Distribution of a Sample Mean</u></h3>
+                <br>
+                <h4>Enter all fields below</h4>
+
+            </div>
+
+            <table class="samplemeantable">
+                <tr>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <td>μ (population mean):</td>
+                    <td><input type="text" id=samplemeanpopulationmean ></td>
+
+                </tr>
+                <tr>
+                    <td>n (sample size):</td>
+                    <td><input type="text" id=samplemeann></td>
+
+                </tr>
+                <tr>
+                    <td>sd:</td>
+                    <td><input type="text" id=samplemeansd></td>
+
+                </tr>
+            </table>
+            <br>
+
+
+            <table class="samplemeantable">
+                <tr>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <td>P(x̅)</td>
+                    <td>
+                        <select id="samplemeanoperator" class=operator onchange="sampleMeanBoxAppear();">
+                            <option value="1">&gt;</option>
+                            <option value="2" selected>&lt;</option>
+                            <option value="3">in between</option>
+                        </select>
+                    </td>
+                    <td>
+                        <input type="number" id=samplemeanmean>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                    <td id="samplemeantext" class="hide"> and
+                    </td>
+                    <td>
+                        <input type="number" class="hide" id="samplemeanmean2" >
+                    </td>
+                </tr>
+            </table>
+
+
+
+
+
+                <br>
+                <button type="button" id="calculatesamplemean" class="button">Calculate Probability!</button>
+
+
+            <br><br><br>
+
+
+
+            <table class="samplemeananswer">
+            <tr>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr>
+                <td>sd:</td>
+                <td><input type="number" id=samplemeananswersd  class=output disabled></td>
+
+            </tr>
+            <tr>
+                <td>Probability:</td>
+                <td><input type="number" id=samplemeananswerprob  class=output disabled></td>
+
+            </tr>
+            </table>
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div class="section">
+            <h2>Section 11: Confidence Intervals</h2>
+
+
+            <div class="confidenceintervalsproportion">
+            <h3><u>Confidence Interval Population Proportion</u></h3>
+                <br>
+                <h4>Enter all fields below</h4>
+
+            </div>
+
+            <div>
+                <table class="ciproptable">
+                    <tr>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td>Sample Size (n):</td>
+                        <td><input type="text" id=ciproptablesamplesize ></td>
+                    </tr>
+                    <tr>
+                        <td>X:</td>
+                        <td><input type="text" id=ciproptablex></td>
+                    </tr>
+                    <tr>
+                        <td>Confidence Interval:</td>
+                        <td>
+                            <select id="ciproptableci" class=operator>
+                                <option value="50">50%</option>
+                                <option value="60">60%</option>
+                                <option value="70">70%</option>
+                                <option value="80">80%</option>
+                                <option value="90">90%</option>
+                                <option value="95" selected>95%</option>
+                                <option value="98">98%</option>
+                                <option value="99">99%</option>
+                                <option value="99.8">99.8%</option>
+                                <option value="99.9">99.9%</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+
+                <br>
+                <button type="button" id="calculateciproportion" class="button">Calculate Confidence Interval!</button>
+                <br><br>
+
+            </div>
+
+            <div>
+                <table class="CIpropanswer">
+                    <tr>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td>Interval:</td>
+                        <td><input type="text" id=CIpropanswerinterval class=output disabled></td>
+
+                    </tr>
+                    <tr>
+                        <td>UpperBound:</td>
+                        <td><input type="number" id=CIpropanswerupper  class=output disabled></td>
+                    </tr>
+                    <tr>
+                        <td>LowerBound:</td>
+                        <td><input type="number" id=CIpropanswerlower  class=output disabled></td>
+                    </tr>
+                </table>
+                <br>
+                <textarea class="output" id=CIpropexplanation cols="30" rows="5" disabled></textarea>
+            </div>
+
+
+
+
+
+            <div class="confidenceintervalsmean">
+                <h3><u>Confidence Interval Population Mean</u></h3>
+                <br>
+                <h4>Enter all fields below</h4>
+
+            </div>
+
+            <div>
+                <table class="cimeantable">
+                    <tr>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td>Mean:</td>
+                        <td><input type="text" id=cimeantablemean ></td>
+                    </tr>
+                    <tr>
+                        <td>Sample Size (n):</td>
+                        <td><input type="text" id=cimeantablesamplesize ></td>
+                    </tr>
+                    <tr>
+                        <td>SD:</td>
+                        <td><input type="text" id=cimeantablesd></td>
+                    </tr>
+                    <tr>
+                        <td>Sample or Population SD:</td>
+                        <td><input type="radio" name= "samOrpop" value="0" checked id="cimeantablesample"> Sample<br>
+                            <input type="radio" name= "samOrpop" value="1" > Population</td>
+                    </tr>
+                    <tr>
+                        <td>Confidence Interval:</td>
+                        <td>
+                            <select id="cimeantableci" class=operator>
+                                <option value="50">50%</option>
+                                <option value="60">60%</option>
+                                <option value="70">70%</option>
+                                <option value="80">80%</option>
+                                <option value="90">90%</option>
+                                <option value="95" selected>95%</option>
+                                <option value="98">98%</option>
+                                <option value="99">99%</option>
+                                <option value="99.8">99.8%</option>
+                                <option value="99.9">99.9%</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+
+                <br>
+                <button type="button" id="calculatecimean" class="button">Calculate Confidence Interval!</button>
+                <br><br>
+
+            </div>
+
+
+            <div>
+                <table class="CImeananswer">
+                    <tr>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td>Interval:</td>
+                        <td><input type="text" id=CImeananswerinterval class=output disabled></td>
+
+                    </tr>
+                    <tr>
+                        <td>UpperBound:</td>
+                        <td><input type="number" id=CImeananswerupper  class=output disabled></td>
+                    </tr>
+                    <tr>
+                        <td>LowerBound:</td>
+                        <td><input type="number" id=CImeananswerlower  class=output disabled></td>
+                    </tr>
+                </table>
+
+                <br>
+                <textarea class="output" id=CImeanexplanation cols="30" rows="5" disabled></textarea>
+            </div>
+
+
+
+
+
+
+
+
+            <div class="confidenceintervalssamplesize">
+                <h3><u>Minimum Sample Size For Confidence Interval</u></h3>
+                <br>
+                <h4>If margin of error is given in a percentage, convert to decimal form (ex: 2% -> 0.02)</h4>
+            </div>
+
+
+            <div>
+                <table class="confidenceintervalssamplesizesolve">
+                    <tr>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td>Population SD (σ):</td>
+                        <td><input type="text" id=confidenceintervalssamplesizesolvesd class="output" disabled></td>
+                    </tr>
+                    <tr>
+                        <td>Margin of Error:</td>
+                        <td><input type="text" id=confidenceintervalssamplesizesolvesdMoE ></td>
+                    </tr>
+                    <tr>
+                        <td>Mean or Proportion:</td>
+                        <td><input type="radio" name= "meanOrpropSS" value="0"  onchange="calcCISSHide();" id="cimeanvsproportionsamplesize"> Mean<br>
+                            <input type="radio" name= "meanOrpropSS" checked value="1" onchange="calcCISSHide();"> Proportion</td>
+                    </tr>
+                    <tr>
+                        <td>Confidence Interval:</td>
+                        <td>
+                            <select id="confidenceintervalssamplesizesolveci" class=operator>
+                                <option value="50">50%</option>
+                                <option value="60">60%</option>
+                                <option value="70">70%</option>
+                                <option value="80">80%</option>
+                                <option value="90">90%</option>
+                                <option value="95" selected>95%</option>
+                                <option value="98">98%</option>
+                                <option value="99">99%</option>
+                                <option value="99.8">99.8%</option>
+                                <option value="99.9">99.9%</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+
+                <br>
+                <button type="button" id="calculatecimeansamplesize" class="button">Calculate Sample Size!</button>
+                <br><br>
+
+        </div>
+
+        <div>
+            <table class="confidenceintervalssamplesizeans">
+                <tr>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <td>Sample Size:</td>
+                    <td><input type="text" id=confidenceintervalssamplesizeansSS class=output disabled></td>
+
+                </tr>
+            </table>
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div class="section">
+            <h2>Section 12: Significance Tests (Hypothesis Testing)</h2>
+
+
+
+            <div class="hypothesistestprop">
+                <h3><u>Hypothesis Test Population Proportion</u></h3>
+                <br>
+                <h4>Enter both the population and sample proportion in decimal form</h4>
+
+            </div>
+
+            <div>
+                <table class="hypotestproptable">
+                    <tr>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td>Significance Level (α):</td>
+                        <td><select id="hypotestproptablealpha" class=operator>
+                                <option value="0.01">0.01</option>
+                                <option value="0.05" selected>0.05</option>
+                                <option value="0.10">0.10</option>
+                            </select> </td>
+                    </tr>
+                    <tr>
+                        <td>Test Type:</td>
+                        <td><input type="radio" name= "oneVstwo" value="0" checked id="hypotestproptable1v2"> One-Tailed<br>
+                            <input type="radio" name= "oneVstwo" value="1" > Two-Tailed</td>
+                    </tr>
+                    <tr>
+                        <td>Population Proportion (P):</td>
+                        <td><input type="text" id=hypotestproptablepp></td>
+                    </tr>
+                    <tr>
+                        <td>Sample Proportion (p):</td>
+                        <td><input type="text" id=hypotestproptablesp></td>
+                    </tr>
+                    <tr>
+                        <td>Sample Size (n):</td>
+                        <td><input type="text" id=hypotestproptablen></td>
+                    </tr>
+                </table>
+
+                <br>
+                <button type="button" id="calculateHTprop" class="button">Calculate Hypothesis Test!</button>
+                <br><br>
+
+            </div>
+
+
+
+            <div>
+                <textarea class="output" disabled id=hypothesispropexplanation cols="30" rows="5"></textarea>
+            </div>
+
+
+
+
+
+            <div class="hypothesistestmean">
+                <h3><u>Hypothesis Test Population Mean</u></h3>
+                <br>
+                <h4>Enter in all of the fields below</h4>
+
+            </div>
+
+            <div>
+                <table class="hypothesistestmeantable">
+                    <tr>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td>Significance Level (α):</td>
+                        <td><select id="hypothesistestmeantablealpha" class=operator>
+                                <option value="0.01">0.01</option>
+                                <option value="0.05" selected>0.05</option>
+                                <option value="0.10">0.10</option>
+                            </select> </td>
+                    </tr>
+                    <tr>
+                        <td>Test Type:</td>
+                        <td><input type="radio" name= "oneVstwohyp" value="0" checked id="hypothesistestmeantable1v2"> One-Tailed<br>
+                            <input type="radio" name= "oneVstwohyp" value="1" > Two-Tailed</td>
+                    </tr>
+                    <tr>
+                        <td>Population Mean (μ):</td>
+                        <td><input type="text" id=hypothesistestmeantableu></td>
+                    </tr>
+                    <tr>
+                        <td>Sample Mean (x̅):</td>
+                        <td><input type="text" id=hypothesistestmeantablex></td>
+                    </tr>
+                    <tr>
+                        <td>SD:</td>
+                        <td><input type="text" id=hypothesistestmeantablesd></td>
+                    </tr>
+                    <tr>
+                        <td>Sample Size (n):</td>
+                        <td><input type="text" id=hypothesistestmeantablen></td>
+                    </tr>
+                </table>
+
+                <br>
+                <button type="button" id="calculateHTmean" class="button">Calculate Hypothesis Test!</button>
+                <br><br>
+
+            </div>
+
+
+
+            <div>
+                <textarea class="output" disabled id=hypothesismeanexplanation cols="30" rows="5"></textarea>
+            </div>
+
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div class="section">
+            <h2>Section 13: Two-Sample Inference Between Groups</h2>
+
+
+
+            <div class="comparetwoprop">
+                <h3><u>Comparing Two Proportions</u></h3>
+                <br>
+                <h4>Enter proportions either in total amount or percentage form</h4>
+
+            </div>
+
+            <div>
+                <table class="comparetwoproptable">
+                    <tr>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td>Test Type:</td>
+                        <td><input type="radio" name= "oneVstwocompareprop" value="0" checked id="comparetwoproptable1v2"> One-Tailed<br>
+                            <input type="radio" name= "oneVstwocompareprop" value="1" > Two-Tailed</td>
+                    </tr>
+                    <tr>
+                        <td>Significance Level (α):</td>
+                        <td><select id="comparetwoproptablealpha" class=operator>
+                                <option value="0.0005">0.0005</option>
+                                <option value="0.001">0.001</option>
+                                <option value="0.005">0.005</option>
+                                <option value="0.01">0.01</option>
+                                <option value="0.025">0.025</option>
+                                <option value="0.05" selected>0.05</option>
+                                <option value="0.10">0.10</option>
+                            </select> </td>
+                    </tr>
+                    <tr>
+                        <td>Proportion #1 (p̂<sub>1</sub>):</td>
+                        <td><input type="text" id=comparetwoproptablep1></td>
+                    </tr>
+                    <tr>
+                        <td>Sample Size #1 (n<sub>1</sub>):</td>
+                        <td><input type="text" id=comparetwoproptablen1></td>
+                    </tr>
+                    <tr>
+                        <td>Proportion #2 (p̂<sub>2</sub>):</td>
+                        <td><input type="text" id=comparetwoproptablep2></td>
+                    </tr>
+                    <tr>
+                        <td>Sample Size #2 (n<sub>2</sub>):</td>
+                        <td><input type="text" id=comparetwoproptablen2></td>
+                    </tr>
+                </table>
+
+                <br>
+                <button type="button" id="calculatecompareprop" class="button">Calculate Two-Sample Test!</button>
+                <br><br>
+
+            </div>
+
+            <div>
+                <textarea class="output" disabled id=comparetwopropsexplanation cols="30" rows="5"></textarea>
+            </div>
+
+
+
+
+
+
+
+            <div class="comparetwomean">
+                <h3><u>Comparing Two Means (Hypothesis Test/Condidence Interval)</u></h3>
+                <br>
+                <h4>Enter all fields below</h4>
+
+            </div>
+
+            <div>
+                <table class="comparetwomeantable">
+                    <tr>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td>Hyp/CI:</td>
+                        <td><input type="radio" name= "comparemeantesttype" value="0" checked id="hypothesistestmeantabletesttype" onchange="comparePopMeanDisplay()"> Hypothesis Testing   <br>
+                            <input type="radio" name= "comparemeantesttype" value="1" onchange="comparePopMeanDisplay()"> Confidence Interval   </td>
+                    </tr>
+                    <tr>
+                        <td id="comparemean1v2text">Test Type:</td>
+                        <td id="comparemean1v2input"><input type="radio" name= "oneVstwocomparemean" value="0" checked id="comparetwomeantable1v2"> One-Tailed<br>
+                            <input type="radio" name= "oneVstwocomparemean" value="1" > Two-Tailed</td>
+                    </tr>
+                    <tr>
+                        <td id="comparemeansigtext" class="">Significance Level (α):</td>
+                        <td id="comparemeansiginput" class=""><select id="comparetwomeantablealpha">
+                            <option value="0.0005">0.0005</option>
+                            <option value="0.001">0.001</option>
+                            <option value="0.005">0.005</option>
+                            <option value="0.01">0.01</option>
+                            <option value="0.025">0.025</option>
+                            <option value="0.05" selected>0.05</option>
+                            <option value="0.10">0.10</option>
+                        </select> </td>
+                    </tr>
+                    <tr>
+                        <td id="comparemeancitext" class="hide">Confidence Interval:</td>
+                        <td id="comparemeanciinput" class="hide">
+                            <select id="comparemeanci">
+                                <option value="50">50%</option>
+                                <option value="60">60%</option>
+                                <option value="70">70%</option>
+                                <option value="80">80%</option>
+                                <option value="90">90%</option>
+                                <option value="95" selected>95%</option>
+                                <option value="98">98%</option>
+                                <option value="99">99%</option>
+                                <option value="99.8">99.8%</option>
+                                <option value="99.9">99.9%</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="" id="comparemeansdtext">Variance Type:</td>
+                        <td class="" id="comparemeansdinput"><input type="radio" name= "comparemeansdtype" value="0" checked id="hypothesistestmeantablesdtype" class="" onchange="comparePopMeanDisplay()"> Pooled<br>
+                            <input type="radio" name= "comparemeansdtype" value="1" class="" onchange="comparePopMeanDisplay()"> Different</td>
+                    </tr>
+                    <tr>
+                        <td>Mean #1 (x̅<sub>1</sub>):</td>
+                        <td><input type="text" id=comparetwomeantablex1></td>
+                    </tr>
+                    <tr>
+                        <td>Sample Size #1 (n<sub>1</sub>):</td>
+                        <td><input type="text" id=comparetwomeantablen1></td>
+                    </tr>
+                    <tr>
+                        <td>Sd #1 (s<sub>1</sub>):</td>
+                        <td><input type="text" id=comparetwomeantables1></td>
+                    </tr>
+                    <tr>
+                        <td>Mean #2 (x̅<sub>2</sub>):</td>
+                        <td><input type="text" id=comparetwomeantablex2></td>
+                    </tr>
+                    <tr>
+                        <td>Sample Size #2 (n<sub>2</sub>):</td>
+                        <td><input type="text" id=comparetwomeantablen2></td>
+                    </tr>
+                    <tr>
+                        <td class="" id="comparemeansd2text">Sd #2 (s<sub>2</sub>):</td>
+                        <td class="" id="comparemeansd2input"><input type="number" id=comparetwomeantables2 class=""></td>
+                    </tr>
+
+
+
+                </table>
+
+                <br>
+                <button type="button" id="calculatecomparemean" class="button">Calculate Test!</button>
+                <br><br>
+
+            </div>
+
+            <div>
+                <textarea class="output" disabled id=comparetwomeansexplanation cols="30" rows="5"></textarea>
+            </div>
+
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+        <br><br><br><br><br><br><br><br><br>
+
+
+        <footer>
+            <div class="row">
+                <div class="col span-1-of-2">
+                    <ul class="footer-nav">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Press</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col span-1-of-2">
+                    <ul class="social-media">
+                        <li><a href="https://www.facebook.com/Complete-Class-Calculators-465971840846178/?view_public_for=465971840846178"><ion-icon name="logo-facebook" class="facebook-icon"></ion-icon></a></li>
+                        <li><a href="https://twitter.com/_TI84_?lang=en"><ion-icon name="logo-twitter" class="twitter-icon"></ion-icon></a></li>
+                        <li><a href="#"><ion-icon name="logo-youtube" class="youtube-icon"></ion-icon></a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row">
+                <p>
+                    Copyright &copy; 2019 by Complete Class Calculators. All rights reserved.
+                </p>
+            </div>
+        </footer>
+
+
+
+
+
+    </body>
+
+<!--    JQUERY MUST BE TOP-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+    <script src="{{ url_for('static',filename='css/mag_pop/jquery.magnific-popup.min.js') }}"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://unpkg.com/ionicons@4.5.10-1/dist/ionicons.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.matchmedia.addListener.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/selectivizr@1.0.3/selectivizr.min.js"></script>
+    <script src="{{ url_for('static',filename='css/vendors/jquery.waypoints.min.js') }}"></script>
+
+<!--    our script is always last   -->
+    <script src="{{ url_for('static',filename='javascript/stats.js') }}"></script>
+
+
+
+</html>

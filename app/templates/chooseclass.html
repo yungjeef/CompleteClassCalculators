@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/mag_pop/magnific-popup.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/vendors/css/normalize.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/vendors/css/grid.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/stats.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/queries.css') }}">
+
+        <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+
+        <title>CCC: Stats</title>
+
+        <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static',filename='images/fav_icons/favicon-32x32.png') }}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static',filename='images/fav_icons/favicon-16x16.png') }}">
+
+    </head>
+
+    <body>
+
+        <header>
+            <nav>
+                <div class="row">
+                    <img src="{{ url_for('static',filename='images/general_photos/logo.png') }}" alt="CCC Logo" class="logo">
+                    <img src="{{ url_for('static',filename='images/general_photos/logo.png') }}" alt="CCC Logo" class="logo-scroll">
+
+                    <ul class="main-nav main-nav-output">
+                        <li><a href="/team">Meet the Team</a></li>
+                        <li><a href="/logout">Log Out</a></li>
+                        <li class="dropdown">
+                    </ul>
+                    <a class="small-screen-nav nav-icon-popout"><ion-icon name="add-circle"></ion-icon></a>
+                </div>
+            </nav>
+
+            <div class="header-box" id="top-of-page">
+
+              <br>
+              <br>
+                <h1>Complete Class Calculators</h1>
+                <h1>Choose the class you would like help with below.</h1>
+                <a class="btn btn-header" href="/statistics">Introductory Statistics</a>
+                <a class="btn btn-header" href="/linearalgebra">Linear Algebra</a>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <div class="upcoming-courses">
+                  <p>Upcoming Classes to be added</p>
+                  <br>
+                  <ul>
+                    <li>Introductory Physics</li>
+                    <li>Introductory Chemistry</li>
+                  </ul>
+                </div>
+            </div>
+            <div class="profile">
+              <img src="{{picture}}" alt="" style="float: left; border:3px solid rgba(179, 179, 255, 0.4);">
+              <div class="">
+                <h1 style="float: left;">Welcome {{name}}</h1>
+                <p style="color: white;">Logged in from email: {{email}}</p>
+              </div>
+            </div>
+        </header>
+
+      </body>
+</html>
